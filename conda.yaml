@@ -1,9 +1,0 @@
-name: mlflow-env
-channels:
-  - defaults
-dependencies:
-  - python=3.8
-  - mlflow
-  - scikit-learn
-  - joblib
-  - azure-storage-blob

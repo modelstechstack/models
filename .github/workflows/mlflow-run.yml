@@ -13,17 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2  # Check out the code from the repository
 
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          auto-update-conda: true
-          environment-file: conda.yaml  # Specify your conda environment file
-          activate-environment: mlflow-env  # Name of your conda environment
-          use-mamba: true  # Optional: speeds up package installation
-      - name: Install MLflow
+          python-version: '3.8'  # Specify the Python version to use
+
+      - name: Install dependencies
         run: |
-          conda activate mlflow-env  # Activate the conda environment
-          conda install mlflow -y  # Install MLflow in the activated environment
+          pip install --upgrade pip  # Upgrade pip to the latest version
+          pip install -r requirements.txt  # Install dependencies from requirements.txt
 
       - name: Run MLflow experiment
         env:
@@ -31,4 +29,4 @@ jobs:
           MLFLOW_ARTIFACT_URI: wasbs://ctsmlstackstgbronze@ctsmlstackstg.blob.core.windows.net/
         run: |
           echo "Running MLflow experiment"
-          mlflow run . --env-manager conda  # Run the MLflow experiment in the current directory
+          mlflow run . --env-manager local  # Run the MLflow experiment in the current directory
