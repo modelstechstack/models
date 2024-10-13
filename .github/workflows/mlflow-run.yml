@@ -1,0 +1,36 @@
+name: Run MLflow Experiment
+
+on:
+  push:
+    branches:
+      - main  # or any branch you want to trigger the workflow
+
+jobs:
+  run-experiment:
+    runs-on: ubuntu-latest  # Specifies the environment to run the job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the repository code
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Specify the Python version
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt  # Install dependencies from requirements.txt
+          elif [ -f conda.yaml ]; then
+            conda env create -f conda.yaml  # Create conda environment if conda.yaml exists
+            conda activate mlflow-env  # Activate the conda environment
+          fi
+
+      - name: Run MLflow experiment
+        env:
+          MLFLOW_TRACKING_URI: http://4.255.46.89:5000
+          MLFLOW_ARTIFACT_URI: wasbs://ctsmlstackstgbronze@ctsmlstackstg.blob.core.windows.net/ 
+        run: |
+          mlflow run https://github.com/modelstechstack/models.git --env-manager conda
+
