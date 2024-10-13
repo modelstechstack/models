@@ -1,0 +1,6 @@
+name: scilearn
+
+entry_points:
+  main:
+    command: "python main.py"  # Replace 'main.py' with the name of your script.
+
