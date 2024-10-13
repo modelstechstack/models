@@ -20,6 +20,10 @@ jobs:
           environment-file: conda.yaml  # Specify your conda environment file
           activate-environment: mlflow-env  # Name of your conda environment
           use-mamba: true  # Optional: speeds up package installation
+      - name: Install MLflow
+        run: |
+          conda activate mlflow-env  # Activate the conda environment
+          conda install mlflow -y  # Install MLflow in the activated environment
 
       - name: Run MLflow experiment
         env:
