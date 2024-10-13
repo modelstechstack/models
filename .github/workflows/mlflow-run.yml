@@ -22,7 +22,6 @@ jobs:
         run: |
           pip install --upgrade pip  # Upgrade pip to the latest version
           pip install -r requirements.txt  # Install dependencies from requirements.txt
-
       - name: Run MLflow experiment
         env:
           MLFLOW_TRACKING_URI: http://4.255.46.89:5000  # Your MLflow tracking server URL
