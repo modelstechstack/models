@@ -28,4 +28,4 @@ jobs:
           MLFLOW_ARTIFACT_URI: wasbs://ctsmlstackstgbronze@ctsmlstackstg.blob.core.windows.net/
         run: |
           echo "Running MLflow experiment"
-          mlflow run . --env-manager local  # Run the MLflow experiment in the current directory
+          mlflow run . --env-manager local  # Run the MLflow experiment in the current directory v1.0
