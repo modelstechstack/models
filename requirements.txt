@@ -1,4 +1,5 @@
 mlflow
 scikit-learn
 joblib
+azure
 azure-storage-blob
