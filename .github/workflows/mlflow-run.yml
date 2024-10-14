@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt  # Install dependencies from requirements.txt
       - name: Run MLflow experiment
         env:
-          MLFLOW_TRACKING_URI: http://135.237.2.199:5000  # Your MLflow tracking server URL
+          MLFLOW_TRACKING_URI: http://172.214.126.121:5000  # Your MLflow tracking server URL
           MLFLOW_ARTIFACT_URI: wasbs://ctsmlstackstgbronze@ctsmlstackstg.blob.core.windows.net/
         run: |
           echo "Running MLflow experiment"
