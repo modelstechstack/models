@@ -22,4 +22,4 @@ with mlflow.start_run() as run:
     # Save the model to a .pkl file
     model_filename = "model.pkl"
     joblib.dump(model, model_filename)
-    mlflow.log_artifact(model_filename)  # This logs the .pkl file to the artifact store - testing v1.2
+    mlflow.log_artifact(model_filename)  # This logs the .pkl file to the artifact store - testing v1.3

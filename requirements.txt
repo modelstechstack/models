@@ -1,5 +1,5 @@
+azure-storage-blob
 mlflow
 scikit-learn
 joblib
 azure-identity
-azure-storage-blob
